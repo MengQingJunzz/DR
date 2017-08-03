@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>求婚钻戒（分页）</title>
+    <style>
+    /*清除样式*/
+    body,html,div,img,ul,li,ol,dl,dt,dd,input,p{margin:0;padding:0;}
+    ul,ol,li{list-style:none;}
+    a{text-decoration:none;}
+    b,i,strong,em{font-style:normal;font-weight:normal;}
+
+    /*公共样式*/
+    #top,#nav1,#ban,#goos_menu,#footer{width:100%;}
+
+    /*top区域*/
+    #top{height:170px;background:#fff;}
+    #top .top-in{width:1004px;height:170px;margin:0 auto;}
+    .top-in .t_left{width:145px;height:144px;float:left;padding:26px 0 0 10px;}
+    .top-in .t_right{width:582px;height:144px;float:right;padding-top:26px;}
+    .top-in .t_right .ul_rig{width:582px;height:28px;position:relative;}
+    .top-in .t_right .ul_rig li{float:left;margin-right:20px;}
+    .top-in .t_right .ul_rig li a{font-size:12px;color:#8d8d8d;text-align:center;line-height:20px;}
+
+    .top-in .t_right .ul_rig li .log{width:54px;height:20px;display:inline-block;}
+    .top-in .t_right .ul_rig li .regi{width:68px;height:20px;display:inline-block;color:#fff;background:#d9b39b;}
+    .top-in .t_right .ul_rig li .join{width:72px;height:20px;background:url(imgs_page/icon2.png) no-repeat 1px 2px;
+        display:inline-block;}
+
+    .top-in .t_right .ul_rig .thir{width:110px;height:20px;padding-top:1px;}
+    .top-in .t_right .ul_rig .last{width:84px;height:26px;border:1px solid #fff;position:absolute;
+        right:0;top:0;z-index:2;background:#fff;border-bottom:none;}
+    .top-in .t_right .city{width:235px;height:130px;border:1px solid #d9b39b;position:absolute;
+        right:20px;top:25px;z-index:1;display:none;}
+    .top-in .t_right .city .c_list{width:230px;height:125px;background:#fff;padding:5px 0 0 5px;}
+    .top-in .t_right .city .c_list li{float:left;width:45px;height:30px;margin-right:0;}
+    .top-in .t_right .city .c_list li a{font-size:12px;color:#8d8d8d;}
+    .top-in .t_right .city .c_list li a:hover{color:#d9b39b;}
+
+    .top-in .t_right .valid{width:355px;height:80px;padding:30px 0 0 225px;background:#fff;}
+    .top-in .t_right .valid .adr{width:50px;height:28px;display:inline-block;text-align:center;line-height:28px;
+        font-size:12px;color:#8d8d8d;}
+    .top-in .t_right .valid #sear{outline:none;}
+    .top-in .t_right .valid #btn1{width:80px;height:18px;display:inline-block;text-align:center;line-height:18px;
+        border:1px solid #000;font-size:12px;color:#000;}
+    .top-in .t_right .valid #btn1:hover{background:#ccc;}
+
+    /*导航区*/
+    #nav1{height:50px;background:#797979;}
+    #nav1 .nva1-in{width:1004px;height:50px;margin:0 auto;}
+    .nva1-in ul li{float:left;width:142px;height:50px;text-align:center;line-height:50px;}
+    .nva1-in ul li a{color:#fff;}
+
+    /*banner区域*/
+    #ban{height:407px;background:#fff;padding-top:5px;}
+    #ban .ban-in{width:100%;height:407px;margin:0 auto;position:relative;}
+    .ban-in .img_ban{width:100%;height:407px;position:absolute;left:0;top:0;overflow:hidden;}
+    .ban-in .img_ban img{position:absolute;top:0;left:-330px;border-top:5px solid #000;}
+
+    /*商品列表*/
+    #goos_menu{height:368px;background:#f6efef;}
+    #goos_menu .menu-in{width:1004px;height:368px;margin:0 auto;background:gold;}
+
+    /*footer全部内容*/
+    #footer{height:auto;margin-top:10px;}
+    </style>
+    <link rel="stylesheet" href="css/page.css">
+    <script src="libs/jquery-1.11.3.js"></script>
+    <script src="js/page.js"></script>
+</head>
+<body>
+<!--==============头部=====================-->
+<div id="top">
+    <div class="top-in">
+        <div class="t_left">
+            <a href="##"><img src="imgs_page/34.png" alt=""></a>
+        </div>
+        <div class="t_right">
+            <ul class="ul_rig">
+                <li><a class="log" href="##">登录</a></li>
+                <li><a class="regi" href="##">加入DR族</a></li>
+                <li class="thir"><img src="imgs_page/01.png" alt=""></li>
+                <li><a class="join" href="##">DR族APP</a></li>
+                <li><a href="##">中文（简体）</a></li>
+                <li class="last"><a class="story" href="##">所在城市店铺：</a></li>
+                <div class="city">
+                    <ul class="c_list">
+                        <li><a href="##">香港</a></li>
+                        <li><a href="##">上海</a></li>
+                        <li><a href="##">北京</a></li>
+                        <li><a href="##">深圳</a></li>
+                        <li><a href="##">广州</a></li>
+                        <li><a href="##">南京</a></li>
+                        <li><a href="##">成都</a></li>
+                        <li><a href="##">天津</a></li>
+                        <li><a href="##">昆明</a></li>
+                        <li><a href="##">宁波</a></li>
+                        <li><a href="##">大连</a></li>
+                        <li><a href="##">长沙</a></li>
+                        <li><a href="##">重庆</a></li>
+                        <li><a href="##">武汉</a></li>
+                        <li><a href="##">郑州</a></li>
+                        <li><a href="##">杭州</a></li>
+                        <li><a href="##">苏州</a></li>
+                        <li><a href="##">无锡</a></li>
+                    </ul>
+                </div>
+            </ul>
+
+            <div class="valid">
+                <img src="imgs_page/36.png" alt="">
+                <a class="adr" href="##">中国大陆</a>
+                <input type="text" placeholder="请输入身份证号验证真爱承诺" id="sear">
+                <a id="btn1" href="##">ID真爱查询</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--=================导航==================-->
+<div id="nav1">
+    <div class="nva1-in">
+        <ul>
+            <li><a href="##">DR</a></li>
+            <li><a href="##">求婚钻戒</a></li>
+            <li><a href="##">爱的礼物</a></li>
+            <li><a href="##">钻戒定制</a></li>
+            <li><a href="##">DR实体店</a></li>
+            <li><a href="##">DR品牌文化</a></li>
+            <li><a href="##">DR社区</a></li>
+        </ul>
+    </div>
+</div>
+<!--==============banner区域===============-->
+<div id="ban">
+    <div class="ban-in">
+        <a class="img_ban" href="##"><img src="imgs_page/15.jpg" alt=""></a>
+    </div>
+</div>
+<!--================商品列表================-->
+<div id="goos_menu">
+    <div class="menu-in">
+
+    </div>
+</div>
+<!--=================底部==================-->
+
+<div id="footer">
+
+</div>
+
+
+</body>
+</html>

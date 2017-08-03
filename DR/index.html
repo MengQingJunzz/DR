@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="bottom/css/bottom.css" />
+    <script src="libs/jquery-1.11.3.js"></script>
+    <script src="bottom/js/index.js"></script>
+    <script>
+        $(function(){
+//nav tab
+            $('.nav_con').children('ul').children().bind({
+                mouseenter:function(){
+                    var num = $(this).index();
+                    $(this).css('color','#dbc7ba');
+                    $('.tab').children().css('display','none');
+                    $('.tab').children().eq(num).css('display','block');
+                },
+                mouseleave:function(){
+                    var num2 = $(this).index();
+                    $(this).css('color','#fff');
+                    $('.tab').children().eq(num2).css('display','none');
+                }
+            });
+            $('.tab').children().bind({
+                mouseenter:function(){
+                    $(this).css('display','block')
+                },
+                mouseleave:function(){
+                    $(this).css('display','none')
+                }
+            });
+//tab轮播
+            var tabindex = 0;
+            var time = null;
+            clearInterval(time);
+            //初始状态
+/*
+            $('.tabnav5_right ul').children('li').eq(tabindex).siblings('li').css("display","none");
+*/
+            show();
+            function show(){
+                time = setInterval(function(){
+                    tabindex++;
+                    if(tabindex == 3){
+                        tabindex = 0;
+                    }
+                    $('.tabnav5_right ul').children('li').eq(tabindex).fadeIn(1000).siblings('li').fadeOut(1000);
+                },2000);
+            };
+//求婚钻戒
+            $('.tabnav2_left ul li').bind({
+                mouseenter:function(){
+                    var tabnav2_left_num = $(this).index();
+                   $('.tabnav2_left img').attr('src','images/left-icon'+tabnav2_left_num+'.jpg');
+                    $(this).css('color','#c67c59');
+                    $(this).css('border-color','#797979');
+                },
+                mouseleave:function(){
+                    $(this).css('color','#797979');
+                    $(this).css('border-color','#ccc');
+                }
+            });
+            $('.tabnav2_right ul li').bind({
+                mouseenter:function(){
+                    var tabnav2_right_num = $(this).index();
+                    $('.tabnav2_right img').attr('src','images/right-icon'+tabnav2_right_num+'.jpg');
+                    $(this).css('color','#c67c59');
+                    $(this).css('border-color','#797979');
+                },
+                mouseleave:function(){
+                    $(this).css('color','#797979');
+                    $(this).css('border-color','#ccc');
+                }
+            });
+//爱的礼物
+            $('.tabnav3_left ul li').bind({
+                mouseenter:function(){
+                    var tabnav3_left_num = $(this).index();
+                    $('.tabnav3_left img').attr('src','images/left_icon'+tabnav3_left_num+'.jpg');
+                    $(this).css('color','#c67c59');
+                    $(this).css('border-color','#797979');
+                },
+                mouseleave:function(){
+                    $(this).css('color','#797979');
+                    $(this).css('border-color','#ccc');
+                }
+            });
+            $('.tabnav3_right ul li').bind({
+                mouseenter:function(){
+                    var tabnav3_right_num = $(this).index();
+                    $('.tabnav3_right img').attr('src','images/right_icon'+tabnav3_right_num+'.jpg');
+                    $(this).css('color','#c67c59');
+                    $(this).css('border-color','#797979');
+                },
+                mouseleave:function(){
+                    $(this).css('color','#797979');
+                    $(this).css('border-color','#ccc');
+                }
+            });
+//热门城市
+            $('.hotcity li').bind({
+                mouseenter:function(){
+                    $(this).siblings().children('a').removeClass('hover');
+                    $(this).children('a').addClass('hover')
+                },
+                mouseleave:function(){
+                    $(this).children('a').removeClass('hover');
+                }
+            });
+//area
+
+            $('.area li').bind({
+                mouseenter:function(){
+                    var linenum = $(this).index();
+                    $(this).siblings().children('a').removeClass('areali1');
+                    $(this).children('a').addClass('areali1');
+                    $('.line').stop().animate({
+                        width:35+linenum*55+'px'
+                    });
+                    $('.line_con').animate({
+                        width:35+linenum*55+'px'
+                    });
+                    $('.areacity').children().eq(linenum).css('display','block').animate({
+                        width:320+'px'
+                    }).siblings().css('display','none').animate({
+                        width:0
+                    })
+                }
+            });
+            $('.area .arealast').unbind('mouseenter');
+//DR实体店
+            $('.dr_store_index ul li').bind({
+                mouseenter:function(){
+                    var linenum = $(this).index();
+                    $(this).siblings().removeClass('font');
+                    $(this).addClass('font');
+                    $('.line').animate({
+                        width:98+linenum*125+'px'
+                    });
+                    $('.line_con').animate({
+                        width:98+linenum*125+'px'
+                    });
+                    /*$('.areacity').children().eq(linenum).css('display','block').animate({
+                        width:320+'px'
+                    }).siblings().css('display','none').animate({
+                        width:0
+                    })*/
+                }
+            });
+//轮播
+            var index = 0;
+            var timer = null;
+            clearInterval(timer);
+            autoPlay();
+            function autoPlay(){
+                timer = setInterval(function(){
+                    index++;
+                    if(index == 6){
+                        index = 0;
+                    }
+                    $('.banner .drbanner').children('li').eq(index).fadeIn(1000).siblings('li').fadeOut(1000);
+
+                    //清除
+                    $('.banner_nav').children().children().removeClass('active');
+                    $('.banner_nav').children().children().eq(index).addClass('active');
+                },2000);
+            }
+//左右
+            $('.drbanner li').bind({
+                mouseenter:function(){
+                    $('.left').css('display','block');
+                    $('.right').css('display','block');
+                },
+                mouseleave:function(){
+                    $('.left').css('display','none');
+                    $('.right').css('display','none');
+                }
+            });
+//左边
+            $('.left').bind({
+                mouseenter:function(){
+                    //此时已经离开li，需要再让left在出现一次，否则会出现闪动（离开li之后left消失，又回到lileft又出现所以会闪动）
+                    $('.left').css('display','block');
+                    $('.right').css('display','block');
+                    $('.left').css('background-position-y','-66px');
+                    clearInterval(timer);
+                },
+                mouseleave:function(){
+                    $('.left').css('background-position-y','0px');
+                    autoPlay();
+                },
+                click:function(){
+                    index--;
+                    if (index == -1) {
+                        index = 5;
+                    }
+
+                    $('.banner_nav').children().children().removeClass('active');
+                    $('.banner_nav').children().children().eq(index).addClass('active');
+
+                    $('.banner .drbanner').children('li').eq(index).fadeIn(1000).siblings('li').fadeOut(1000);
+                }
+            });
+//右边
+            $('.right').bind({
+                mouseenter:function(){
+                    $('.left').css('display','block');
+                    $('.right').css('display','block');
+                    $('.right').css('background-position-y','-66px');
+                    clearInterval(timer);
+                },
+                mouseleave:function(){
+                    $('.right').css('background-position-y','0px');
+                    autoPlay();
+                },
+                click:function(){
+                    index++;
+                    if (index == 6) {
+                        index = 0;
+                    }
+
+                    $('.banner_nav').children().children().removeClass('active');
+                    $('.banner_nav').children().children().eq(index).addClass('active');
+
+                    $('.banner .drbanner').children('li').eq(index).fadeIn(1000).siblings('li').fadeOut(1000);
+                }
+            });
+//轮播nav
+            $('.banner_nav').children().bind({
+                mouseenter:function(){
+                    clearInterval(timer);
+                },
+                mouseleave:function(){
+                    autoPlay();
+                },
+                click:function(){
+                    var indexnav = $(this).index();
+                    index =indexnav;
+                    $('.banner_nav').children().children().removeClass('active');
+                    $('.banner_nav').children().children().eq(indexnav).addClass('active');
+
+                    $('.banner .drbanner').children('li').eq(indexnav).fadeIn(1000).siblings('li').fadeOut(1000);
+                }
+            });
+
+//adver
+            $('.adver_con ul li').bind({
+                mouseenter:function(){
+                    $(this).css('opacity','0.5');
+                },
+                mouseleave:function(){
+                    $(this).css('opacity','1');
+                }
+            });
+//top
+            $('.top_con_right ul li').eq(3).bind({
+                mouseenter:function(){
+                    $(this).css('cursor','pointer');
+                    $(this).find('img').attr('src','images/mobile_hover.png');
+                    $(this).css('color','#c67c59');
+                    $('.dr_app').css('display','block');
+                },
+                mouseleave:function(){
+                    $('.dr_app').css('display','none');
+                }
+            });
+            $('.dr_app').bind({
+                mouseenter:function(){
+                    $('.dr_app').css('display','block');
+                },
+                mouseleave:function(){
+                    $('.dr_app').css('display','none');
+                }
+            });
+            $('.top_con_right ul .li2').bind({
+                mouseenter:function(){
+                    $(this).css('opacity','1')
+                },
+                mouseleave:function(){
+                    $(this).css('opacity','0.5')
+                }
+            });
+//店铺所在地
+            $('.top_con_right ul').find('.last').bind({
+                mouseenter:function(){
+                    $(this).addClass('active2');
+                    $('.city').css('display','block');
+                },
+                mouseleave:function(){
+                    $(this).removeClass('active2');
+                    $('.city').css('display','none');
+                }
+            });
+
+            $('.city').bind({
+                mouseenter:function(){
+                $('.top_con_right ul').find('.last').addClass('active2');
+                $(this).css('display','block');
+                },
+                mouseleave:function(){
+                    $('.top_con_right ul').find('.last').removeClass('active2');
+                    $(this).css('display','none');
+                }
+            });
+            $('.city ul li').bind({
+               mouseenter:function(){
+                    $(this).css('color','#c67c59');
+               },
+                mouseleave:function(){
+                    $(this).css('color','#797979');
+                }
+            });
+
+//
+                $('.search').find('input[type=text]').bind({
+                    mouseenter:function(){
+                        $('.shoprecord').css('display','block');
+                        setTimeout(function(){
+                            $('.shoprecord').css('display','none');
+                        },5000)
+                    },
+                    mouseleave:function(){
+                        $('.shoprecord').css('display','none');
+                    },
+                    fouse:function(){
+                        $('.shoprecord').css('display','none');
+                    }
+                });
+//判断身份证号
+            $('.inquiry').bind({
+                mouseenter:function(){
+                    $('.shoprecord').css('display','block');
+                    setTimeout(function(){
+                        $('.shoprecord').css('display','none');
+                    },5000)
+                },
+                mouseleave:function(){
+                    $('.shoprecord').css('display','none');
+                },
+                click:function(){
+                    var str =  $('.search').find('input[type=text]').val();
+                    var reg =/^[1-9]\d{5}[1-2]\d{3}[0-1]\d[0-3]\d{4}(\d|x)$/;
+                    //var reg = /^\d{17}(\d|X)$/;
+                    if(!reg.test(str)){
+                        $('.shoprecord').css('display','none');
+                        $('.error').css('display','block');
+                        setTimeout(function(){
+                            $('.error').css('display','none');
+                        },5000)
+                    }
+                }
+            });
+//引用底部
+            $('#foot').load('bottom/bottom.html',btm);
+            $(window).scroll(function(){
+                if($(window).scrollTop() >300){
+                    $('.fixed_right').css('display','block');
+                }else {
+                    $('.fixed_right').css('display','none');
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+    <div class="top">
+        <div class="top_con">
+            <h1><img src="images/drlogo.png"/></h1>
+            <div class="top_con_right">
+                <ul>
+                    <li><a href="login.html">登录</a></li>
+                    <li class="li2"><a>加入DR族</a></li>
+                    <li><img src="images/telleft.png"/>400 01 13520</li>
+                    <li><img src="images/mobile.png"/>DR族APP</li>
+                    <li>中文（简体）</li>
+                    <li class="last">所在城市店铺:</li>
+                </ul>
+                <div class="dr_app">
+                    <img src="images/APP_ewm.jpg"/>
+                    <span>信仰真爱的DR族都在扫码下载手机应用</span>
+                </div>
+                <div class="city">
+                    <ul>
+                        <li>香港</li>
+                        <li>上海</li>
+                        <li>北京</li>
+                        <li>深圳</li>
+                        <li>广州</li>
+                        <li>南京</li>
+                        <li>成都</li>
+                        <li>天津</li>
+                        <li>昆明</li>
+                        <li>宁波</li>
+                        <li>大连</li>
+                        <li>长沙</li>
+                        <li>重庆</li>
+                        <li>武汉</li>
+                        <li>郑州</li>
+                        <li>杭州</li>
+                        <li>苏州</li>
+                        <li>无锡</li>
+                    </ul>
+                </div>
+                <div class="drz"><img src="images/drz.png"/></div>
+                <div class="search">
+                    <select>
+                        <option>中国大陆</option>
+                        <option>海外地区</option>
+                        <option>港澳台</option>
+                        <option>其他</option>
+                    </select>
+                    <input type="text" placeholder="请输入身份证号验证真爱承诺">
+                    <span class="inquiry">DR真爱查询</span>
+                    <div class="shoprecord">
+                        <span>Darrying Ring 严格规定男士凭证件一生只能定制一枚，象征男人一生真爱的最高承诺。输入证件号码即可查询购买记录</span>
+                    </div>
+                    <div class="error">
+                        <span>身份证有误，请重新输入。</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="nav">
+    <div class="nav_con">
+        <ul>
+            <li><a href="html/paging.html">DR</a></li>
+            <li><a href="html/paging.html">求婚钻戒</a></li>
+            <li><a href="html/paging.html">爱的礼物</a></li>
+            <li><a href="html/paging.html">钻戒定制</a></li>
+            <li><a href="html/paging.html">DR实体店</a></li>
+            <li><a href="html/paging.html">DR品牌文化</a></li>
+            <li><a href="html/paging.html">DR社区</a></li>
+        </ul>
+        <div class="tab">
+
+            <div class="tabnav1">
+                <div class="tabnav1_left">
+                    <img src="images/drword.png" alt="">
+                    <span><a>加入DR族</a><img src="images/coin_left.png"/></span>
+                </div>
+                <div class="tabnav1_mid">
+                    <img src="images/subNav_line.png"/>
+                </div>
+                <div class="tabnav1_right">
+                    <img src="images/drimg.jpg"/>
+                </div>
+            </div>
+
+            <div class="tabnav2">
+                <div class="tabnav2_left">
+                    <img src="images/left-icon0.jpg"/>
+                    <ul>
+                        <li class="tabnav2_left_li1">稀世粉钻</li>
+                        <li>Love Line系列</li>
+                        <li>Fover系列</li>
+                        <li>My Heart系列</li>
+                        <li>True Love系列</li>
+                    </ul>
+                </div>
+
+                <div class="tabnav2_right">
+                    <ul>
+                        <li class="tabnav2_right_li1">I Swear系列</li>
+                        <li>Just You系列</li>
+                        <li>Princess系列</li>
+                        <li>Believe系列</li>
+                        <li>查看全部商品</li>
+                    </ul>
+                    <img src="images/right-icon0.jpg"/>
+                </div>
+            </div>
+
+            <div class="tabnav3">
+                <div class="tabnav3_left">
+                    <img src="images/left-icon0.jpg"/>
+                    <ul>
+                        <li class="tabnav3_left_li1">对戒</li>
+                        <li>男戒</li>
+                        <li>吊坠</li>
+                        <li>耳饰</li>
+                        <li>手链/手镯</li>
+                    </ul>
+                </div>
+
+                <div class="tabnav3_right">
+                    <ul>
+                        <li class="tabnav3_right_li1">十二星座吊坠</li>
+                        <li>纪念日礼物</li>
+                        <li>生日礼物</li>
+                        <li>节日礼物</li>
+                        <li>查看全部商品</li>
+                    </ul>
+                    <img src="images/right-icon0.jpg"/>
+                </div>
+            </div>
+
+            <div class="tabnav4">
+                <div class="tabnav4_left">
+
+                </div>
+            </div>
+            <div class="tabnav5">
+                <div class="tabnav5_left">
+                    <p><span>热门城市</span></p>
+                    <ul class="hotcity">
+                        <li><a>香港</a></li>
+                        <li><a>上海</a></li>
+                        <li><a>北京</a></li>
+                        <li><a>广州</a></li>
+                        <li><a>深圳</a></li>
+                    </ul>
+                    <ul class="area">
+                        <li><a class="areali1">华东区</a></li>
+                        <li><a>华北区</a></li>
+                        <li><a>华中区</a></li>
+                        <li><a>华南区</a></li>
+                        <li><a>西南区</a></li>
+                        <li class="arealast"><a>更多></a></li>
+                    </ul>
+                    <div class="allline">
+                        <div class="mrline"></div>
+                        <div class="line">
+                            <div class="line_con"></div>
+                            <div class="line_box"></div>
+                        </div>
+                    </div>
+                    <div class="areacity">
+                        <ul class="areacity1">
+                            <li><a>上海</a></li>
+                            <li><a>南京</a></li>
+                            <li><a>苏州</a></li>
+                            <li><a>无锡</a></li>
+                            <li><a>宁波</a></li>
+                            <li><a>更多></a></li>
+                        </ul>
+                        <ul class="areacity2">
+                            <li><a>北京</a></li>
+                            <li><a>天津</a></li>
+                            <li><a>大连</a></li>
+                            <li><a>沈阳</a></li>
+                            <li><a>西安</a></li>
+                            <li><a>更多></a></li>
+                        </ul>
+                        <ul class="areacity3">
+                            <li><a>武汉</a></li>
+                            <li><a>长沙</a></li>
+                            <li><a>郑州</a></li>
+                            <li><a>杭州</a></li>
+                            <li><a>更多></a></li>
+                        </ul>
+                        <ul class="areacity4">
+                            <li><a>深圳</a></li>
+                            <li><a>广州</a></li>
+                            <li><a>南宁</a></li>
+                            <li><a>更多></a></li>
+                        </ul>
+                        <ul class="areacity5">
+                            <li><a>重庆</a></li>
+                            <li><a>成都</a></li>
+                            <li><a>昆明</a></li>
+                            <li><a>更多></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="tabnav5_mid">
+                    <img src="images/subNav_line.png"/>
+                </div>
+                <div class="tabnav5_right">
+                    <ul>
+                        <li class="tabnav5_word"><img src="images/shitidain1.jpg"/><p>香港店</p></li>
+                        <li><img src="images/shitidian2.jpg"/><p>全国实体店</p></li>
+                        <li><img src="images/shitidian3.jpg"/><p>重庆观音桥店</p></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tabnav6">
+                <div class="tabnav6_left">
+                    <img src="images/navleft1.jpg"/>
+                </div>
+                <div class="tabnav6_mid">
+                    <img src="images/subNav_line.png"/>
+                </div>
+                <div class="tabnav6_right">
+                    <img src="images/navright1.jpg"/>
+                </div>
+            </div>
+
+            <div class="tabnav7">
+                <div class="tabnav7_left">
+                    <img src="images/shequ1.jpg"/>
+                </div>
+                <div class="tabnav7_mid">
+                    <img src="images/subNav_line.png"/>
+                </div>
+                <div class="tabnav7_right">
+                    <img src="images/shequ2.jpg"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="banner">
+    <ul class="drbanner">
+        <li class="li1"><img src="images/banner1.jpg" alt=""></li>
+        <li><img src="images/banner2.jpg" alt=""></li>
+        <li><img src="images/banner3.jpg" alt=""></li>
+        <li><img src="images/banner4.jpg" alt=""></li>
+        <li><img src="images/banner5.jpg" alt=""></li>
+        <li><img src="images/banner6.jpg" alt=""></li>
+    </ul>
+    <ul class="banner_nav">
+        <li><span class="active"></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+        <li class="nobg"><span></span></li>
+    </ul>
+    <div class="left"></div>
+    <div class="right"></div>
+</div>
+<div class="adver">
+    <div class="adver_con">
+        <ul>
+            <li class="adli1"><img src="images/adver1.jpg"/></li>
+            <li><img src="images/adver2.jpg"/></li>
+            <li><img src="images/adver3.jpg"/></li>
+        </ul>
+    </div>
+</div>
+
+<div class="addfuture">
+    <div class="addfuture_con">
+        <div class="addfuture_con_top">
+            <div class="top_left">
+                <img src="images/word_left.png"/>
+            </div>
+            <div class="top_right">
+                <img src="images/word_right.png"/>
+            </div>
+        </div>
+        <div class="addfuture_con_index">
+            <div class="index_left">
+                <p>真爱验证：<em>男士凭身份证一生仅能定制一枚</em>，为一生只爱一人的承诺。</p>
+                <p>真爱协议：购前需签真爱协议，承诺此生真爱不变。一句我爱你，就是一辈子。</p>
+                <p>专属页面：购买后将开通情侣专属页面，永久查询见证您的真爱承诺。</p>
+                <p><a>了解DR文化</a><img src="images/black_icon.png"/></p>
+            </div>
+            <div class="index_right">
+                <p>全球浪漫真爱恋人的完美之选，社会名人倾情推荐，每个人都有追爱的勇气。</p>
+                <p>#我是DR族#数以万计的Darry Ring忠诚粉丝以爱为信仰，</p>
+                <p>他们聚集成DR族，<em>一生只爱一人</em>。</p>
+                <p><a>立即选购</a><img src="images/black_icon.png"/></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="w1000">
+    <div class="w1000_con">
+        <div class="dr_store">
+            <div class="dr_store_top">
+                <img src="images/icon_store.png"/>
+                <div class="dr_store_index">
+                    <ul>
+                        <li class="font">全国一览</li>
+                        <li>香港</li>
+                        <li>华东区</li>
+                        <li>华北区</li>
+                        <li>华中区</li>
+                        <li>华南区</li>
+                        <li>西南区</li>
+                    </ul>
+                    <div class="allline">
+                        <div class="mrline"></div>
+                        <div class="line">
+                            <div class="line_con"></div>
+                            <div class="line_box"></div>
+                        </div>
+                    </div>
+                    <div class="hkshop">
+                        <img src="images/hkshop.jpg"/>
+                        <div class="stor_over">
+                            <h3>香港实体店</h3>
+                            <span>香港九龙尖沙咀弥敦道63号 i SQUARE 国际广场地铁层6B号店铺</span>
+                            <p class="p2">营业时间：10:30 -21:00（节假日照常接待）</p>
+                            <p class="p3">预约电话：00852-2367 7389</p>
+                            <p class="p1">立即预约</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dr_ring">
+            <div class="dr_ring_top">
+                <img src="images/icon_ring.png"/>
+                <p><img src="images/onelife.png"/>
+                <span><a>更多商品&gt;&gt;</a></span></p>
+            </div>
+            <div class="dr_ring_index">
+                <ul>
+                    <li class="icon1"><img src="images/icon1.jpg" alt=""></li>
+                    <li class="icon6"><img src="images/icon6.jpg" alt=""></li>
+                    <li class="icon7"><img src="images/icon7.jpg" alt=""></li>
+                    <li class="icon8"><img src="images/icon8.jpg" alt=""></li>
+                    <li class="icon2"><img src="images/icon2.jpg" alt=""></li>
+                    <li class="icon5"><img src="images/icon5.jpg" alt=""></li>
+                </ul>
+            </div>
+            <div class="marry_dr">
+                <div class="marry_dr_top">
+                    <img src="images/icon_lt.png"/>
+                    <p><img src="images/twolife.png"/>
+                        <span><a>更多商品&gt;&gt;</a></span></p>
+                </div>
+                <div class="marry_dr_index">
+                    <ul>
+                        <li class="lt1"><img src="images/lt1.jpg" alt=""></li>
+                        <li><img src="images/lt2.jpg" alt=""></li>
+                        <li class="lt3"><img src="images/lt3.jpg" alt=""></li>
+                        <li><img src="images/lt4.jpg" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="star">
+                <div class="star_top">
+                    <img src="images/icon_star.png"/>
+                </div>
+                <div class="star_index">
+                    <ul>
+                        <li><img src="images/daichen.jpg"/></li>
+                        <li class="middle"><img src="images/qianlv.jpg"/></li>
+                        <li><img src="images/qili.jpg"/></li>
+                    </ul>
+                    <span><a>更多明星推荐&gt;&gt;</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="foot"></div>
+
+</body>
+</html>

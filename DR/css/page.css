@@ -1,0 +1,75 @@
+#bottom{width:100%;height:auto;}
+/*导航条顶部背景色*/
+#bg_color{height:20px;background:#fafafa url(../imgs_regis/bgcolor.jpg) repeat-x left top;}
+/*底部导航*/
+#bot_nav{height:104px;padding-top:20px;}
+#bot_nav ._bot{width:1004px;height:100px;margin:0 auto;}
+#bot_nav ._bot li{float:left;width:90px;height:100px;margin:0 26px 0 26px;}
+#bot_nav ._bot li .a1{width:60px;height:60px;display:inline-block;background:url(../imgs_regis/07.png) no-repeat;}
+#bot_nav ._bot li .a2{width:60px;height:35px;display:inline-block;color:#888;font-size:12px;line-height:35px;
+    text-align:center;}
+#bot_nav ._bot li .li1{background-position:0px 0px;}
+#bot_nav ._bot li .li1:hover{background-position:0px -60px;}
+#bot_nav ._bot li .li2{background-position:-60px 0px;}
+#bot_nav ._bot li .li2:hover{background-position:-60px -60px;}
+#bot_nav ._bot li .li3{background-position:-120px 0px;}
+#bot_nav ._bot li .li3:hover{background-position:-120px -60px;}
+#bot_nav ._bot li .li4{background-position:-180px 0px;}
+#bot_nav ._bot li .li4:hover{background-position:-180px -60px;}
+#bot_nav ._bot li .li5{background-position:-240px 0px;}
+#bot_nav ._bot li .li5:hover{background-position:-240px -60px;}
+#bot_nav ._bot li .li6{background-position:-300px 0px;}
+#bot_nav ._bot li .li6:hover{background-position:-300px -60px;}
+#bot_nav ._bot li .li7{background-position:-360px 0px;}
+#bot_nav ._bot li .li7:hover{background-position:-360px -60px;}
+/*各项服务*/
+#serv{height:94px;background:#e9e9e9;}
+#serv .serv-in{width:1004px;height:94px;margin:0 auto;}
+#serv .serv-in ul{width:1004px;height:94px;position:relative;}
+#serv .serv-in ul li{float:left;padding-top:20px;height:74px;}
+
+/*扫描二维码*/
+#serv .serv-in ul li .rfid{position:absolute;left:-26px;top:90px;background:#e9e9e9;width:187px;height:166px;
+    z-index:1;display:none;}
+.serv-in ul li a{width:182px;height:48px;display:inline-block;background:url(../imgs_regis/06.png) no-repeat
+10px 0px;text-indent:56px;line-height:40px;color:#797979;}
+#serv .serv-in ul li .third{width:240px;}
+#serv .serv-in ul .last{height:48px;line-height:15px;background:url(../imgs_regis/tel.png) no-repeat 0px 40px;
+    color:#797979;}
+#serv .serv-in ul li .rfid a{display:inline-block;width:30px;height:30px;background:url(../imgs_regis/08.png)
+no-repeat;}
+/*背景图定位*/
+#serv .serv-in ul li .rfid .a1{background-position:2px 2px;}
+#serv .serv-in ul li .rfid .a2{background-position:-29px 2px;}
+#serv .serv-in ul li .rfid .a3{background-position:-60px 2px;}
+#serv .serv-in ul li .rfid .a4{background-position:-91px 2px;}
+#serv .serv-in ul li .rfid .a5{background-position:2px -32px;}
+/*改变定位位置*/
+#serv .serv-in ul li .rfid .a1:hover{background-position:2px -66px;}
+#serv .serv-in ul li .rfid .a2:hover{background-position:-29px -66px;}
+#serv .serv-in ul li .rfid .a3:hover{background-position:-60px -66px;}
+#serv .serv-in ul li .rfid .a4:hover{background-position:-91px -66px;}
+#serv .serv-in ul li .rfid .a5:hover{background-position:2px -100px;}
+#serv .serv-in ul li .rfid em{width:187px;height:120px;background:url(../imgs_regis/ew.jpg) no-repeat 33px 5px;
+    display:inline-block;}
+/*聊天窗口*/
+#serv .serv-in ul li ._chat{width:400px;height:500px;border:1px solid #000;border-radius:2%;position:fixed;
+    right:2px;bottom:2px;z-index:3;background:#fff;display:none;overflow:hidden;}
+#serv .serv-in ul li ._chat .bor{height:50px;border-bottom:2px solid #e9e9e9;}
+#serv .serv-in ul li ._chat .bor #btn_dec{background:#fff;width:50px;display:inline-block;text-indent:0;
+    text-align:center;margin-left:287px;}
+#serv .serv-in ul li ._chat .bor #btn_del{background:#fff;width:50px;display:inline-block;text-indent:0;
+    text-align:center;}
+/*更多链接*/
+#more{height:202px;background:#797979;}
+#more .more-in{width:1004px;height:147px;margin:0 auto;padding-top:55px;}
+#more .more-in dl{float:left;width:122px;height:106px;border-right:1px solid #959292;padding-left:40px;}
+#more .more-in .last_dl{border:none;}
+#more .more-in dl dt{height:33px;line-height:33px;font-size:15px;font-weight:bold;color:#cdcdcd;}
+#more .more-in dl a{color:#cdcdcd;line-height:20px;}
+/*版本声明*/
+#ver{height:152px;background:#797979;}
+#ver .ver-in{width:1004px;height:152px;margin:0 auto;}
+#ver .ver-in .version{width:680px;height:100px;margin:0 auto;color:#cdcdcd;padding-top:30px;text-align:center;
+    font-size:13px;line-height:20px;}
+#ver .ver-in .version b{display:block;height:30px;line-height:60px;font-size:15px;font-weight:bold;}

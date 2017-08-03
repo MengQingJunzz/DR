@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="libs/jquery-1.11.3.js"></script>
+    <script>
+
+        $(function(){
+
+        //被选中时执行函数
+         //  console.log($('#check').prop('checked'));
+
+           $('#check').change(function(){
+               if($('#check').prop('checked') == true){
+                   alert(2)
+               }
+           })
+
+        })
+    </script>
+</head>
+<body>
+<input type="checkbox" id="check"> 选中
+</body>
+</html>

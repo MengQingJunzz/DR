@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <style>
+    /*清除样式*/
+    body,html,div,img,ul,li,ol,dl,dt,dd,input,p{margin:0;padding:0;}
+    ul,ol,li{list-style:none;}
+    a{text-decoration:none;}
+    b,i,strong,em{font-style:normal;font-weight:normal;}
+    /*公共样式*/
+    #top,#pic,#bg_color,#bot_nav,#serv,#more,#ver{width:100%;}
+
+    /*头部*/
+    #top{height:64px;background:#fff;}
+    #top .top-in{width:1004px;height:64px;margin:0 auto;}
+    #top .top-in b{display:inline-block;width:194px;height:44px;padding-top:14px;}
+    #top .top-in .t_nav{width:340px;height:64px;float:right;}
+    .top-in .t_nav li{float:left;}
+    .top-in .t_nav li a{color:#8d8d8d;font-size:13px;display:inline-block;line-height:64px;
+         text-align:center;}
+    .top-in .t_nav .fir a{width:50px;height:64px;}
+    .top-in .t_nav .sec a{width:74px;height:20px;background:#d9b39b;color:#fff;margin-top:20px;line-height:20px;}
+    .top-in .t_nav .third{width:122px;height:64px;background:url(imgs_regis/01.png) no-repeat 10px 21px;}
+
+    /*banner轮播图*/
+    #pic{height:571px;background:#000;margin-bottom:5px;}
+    #pic .pic-in{width:100%;height:566px;margin:0 auto;}
+    .pic-in ._scroll{width:100%;height:566px;position: relative;}
+    .pic-in ._scroll img{width:100%;height:566px;}
+    .pic-in ._scroll li{width:100%;height:566px;float:left;position:absolute;}
+    .pic-in ._scroll .li1{z-index:1;}
+    .pic-in .resign{width:80px;height:34px;position:absolute;left:614px;bottom:14px;z-index:2;}
+    .pic-in .resign li{width:34px;height:34px;cursor:pointer;}
+    .pic-in .resign .lef{float:left;/*background:url(imgs_regis/bd.png) no-repeat 1px 2px;*/}
+    .pic-in .resign .rig{float:right;/*background:url(imgs_regis/bd.png) no-repeat 2px 2px;*/}
+    .pic-in .bg{background:url(imgs_regis/bd.png) no-repeat 1px 2px;}
+
+    /*注册内容*/
+    #pic .pic-in{position:relative;}
+    #cont{width:312px;height:474px;background:#fff;position:absolute;right:160px;top:100px;z-index:2;
+        border:2px solid #ccc;border-radius:2%;}
+    #cont .moth{height:45px;color:#c67c59;line-height:45px;text-align:center;background:#f5f5f5;margin-bottom:40px;}
+    #cont .menu{height:386px;padding-left:30px;width:282px;}
+    #cont .menu input{width:250px;height:42px;border-radius:3%;border:1px solid #ccc;outline:none;text-indent:38px;
+        margin-bottom:20px;}
+    #cont #user{background:url(imgs_regis/02.png) no-repeat 10px 12px;}
+    #cont #pwd{background:url(imgs_regis/03.png) no-repeat 10px 12px;}
+    #cont #repwd{background:url(imgs_regis/03.png) no-repeat 10px 12px;}
+    #cont #code{background:url(imgs_regis/04.png) no-repeat 10px 9px;width:134px;}
+    #cont .menu .message{width:250px;height:26px;display:inline-block;border:1px solid #ff7373; position:absolute;
+       left:30px; top:51px;background:#fff2f2 url(imgs_regis/05.png) no-repeat 10px 4px;visibility:hidden;
+       text-indent:30px;font-size:12px;line-height:26px;}
+    #cont .menu #codeNum{width:104px;height:42px;display:inline-block;float:right;background:#ccc;color:#000;
+        margin-right:30px;font-size:22px;font-family:cursive;font-weight:bold;text-align:center;line-height:42px;
+        cursor:pointer;}
+    #cont .menu .bot{height:90px;font-size:12px;color:#888;}
+    #cont .menu .bot input{width:15px;height:15px;vertical-align:text-top;}
+    #cont .menu .bot b a{color:#c57d5c;}
+    #cont .menu .bot .btn{width:250px;height:40px;background:#c57d5c;color:#fff;line-height:40px;text-align:center;
+        display:inline-block;border-radius:4%;font-size:14px;cursor:pointer;}
+    #cont .menu ._link{height:30px;}
+    #cont .menu ._link a{background:url(imgs_regis/link.png) no-repeat;width:25px;height:25px;display:inline-block;}
+    #cont .menu ._link .login{margin-right:31px;background:#fff;width:90px;display:inline-block;font-size:12px;
+        line-height:31px;float:right;color:#888;}
+    #cont .menu ._link .qq{background-position: 0px 6px;}
+    #cont .menu ._link .qq:hover{background-position: 0px -21px;}
+    #cont .menu ._link .chat{background-position: -39px 6px;}
+    #cont .menu ._link .chat:hover{background-position: -39px -21px;}
+    #cont .menu ._link .sina{background-position: -82px 6px;}
+    #cont .menu ._link .sina:hover{background-position: -82px -21px;}
+    #cont .menu ._link .pay{background-position: -126px 6px;}
+    #cont .menu ._link .pay:hover{background-position: -126px -21px;}
+
+    /*导航条顶部背景色*/
+    #bg_color{height:20px;background:#fafafa url(imgs_regis/bgcolor.jpg) repeat-x left top;}
+    /*底部导航*/
+    #bot_nav{height:104px;padding-top:20px;}
+    #bot_nav ._bot{width:1004px;height:100px;margin:0 auto;}
+    #bot_nav ._bot li{float:left;width:90px;height:100px;margin:0 26px 0 26px;}
+    #bot_nav ._bot li .a1{width:60px;height:60px;display:inline-block;background:url(imgs_regis/07.png) no-repeat;}
+    #bot_nav ._bot li .a2{width:60px;height:35px;display:inline-block;color:#888;font-size:12px;line-height:35px;
+        text-align:center;}
+    #bot_nav ._bot li .li1{background-position:0px 0px;}
+    #bot_nav ._bot li .li1:hover{background-position:0px -60px;}
+    #bot_nav ._bot li .li2{background-position:-60px 0px;}
+    #bot_nav ._bot li .li2:hover{background-position:-60px -60px;}
+    #bot_nav ._bot li .li3{background-position:-120px 0px;}
+    #bot_nav ._bot li .li3:hover{background-position:-120px -60px;}
+    #bot_nav ._bot li .li4{background-position:-180px 0px;}
+    #bot_nav ._bot li .li4:hover{background-position:-180px -60px;}
+    #bot_nav ._bot li .li5{background-position:-240px 0px;}
+    #bot_nav ._bot li .li5:hover{background-position:-240px -60px;}
+    #bot_nav ._bot li .li6{background-position:-300px 0px;}
+    #bot_nav ._bot li .li6:hover{background-position:-300px -60px;}
+    #bot_nav ._bot li .li7{background-position:-360px 0px;}
+    #bot_nav ._bot li .li7:hover{background-position:-360px -60px;}
+    /*各项服务*/
+    #serv{height:94px;background:#e9e9e9;}
+    #serv .serv-in{width:1004px;height:94px;margin:0 auto;}
+    #serv .serv-in ul{width:1004px;height:94px;position:relative;}
+    #serv .serv-in ul li{float:left;padding-top:20px;height:74px;}
+
+        /*扫描二维码*/
+    #serv .serv-in ul li .rfid{position:absolute;left:-26px;top:90px;background:#e9e9e9;width:187px;height:166px;
+        z-index:1;display:none;}
+    .serv-in ul li a{width:182px;height:48px;display:inline-block;background:url(imgs_regis/06.png) no-repeat
+        10px 0px;text-indent:56px;line-height:40px;color:#797979;}
+    #serv .serv-in ul li .third{width:240px;}
+    #serv .serv-in ul .last{height:48px;line-height:15px;background:url(imgs_regis/tel.png) no-repeat 0px 40px;
+        color:#797979;}
+    #serv .serv-in ul li .rfid a{display:inline-block;width:30px;height:30px;background:url(imgs_regis/08.png)
+        no-repeat;}
+        /*背景图定位*/
+    #serv .serv-in ul li .rfid .a1{background-position:2px 2px;}
+    #serv .serv-in ul li .rfid .a2{background-position:-29px 2px;}
+    #serv .serv-in ul li .rfid .a3{background-position:-60px 2px;}
+    #serv .serv-in ul li .rfid .a4{background-position:-91px 2px;}
+    #serv .serv-in ul li .rfid .a5{background-position:2px -32px;}
+        /*改变定位位置*/
+    #serv .serv-in ul li .rfid .a1:hover{background-position:2px -66px;}
+    #serv .serv-in ul li .rfid .a2:hover{background-position:-29px -66px;}
+    #serv .serv-in ul li .rfid .a3:hover{background-position:-60px -66px;}
+    #serv .serv-in ul li .rfid .a4:hover{background-position:-91px -66px;}
+    #serv .serv-in ul li .rfid .a5:hover{background-position:2px -100px;}
+    #serv .serv-in ul li .rfid em{width:187px;height:120px;background:url(imgs_regis/ew.jpg) no-repeat 33px 5px;
+        display:inline-block;}
+        /*聊天窗口*/
+    #serv .serv-in ul li ._chat{width:400px;height:500px;border:1px solid #000;border-radius:2%;position:fixed;
+        right:2px;bottom:2px;z-index:3;background:#fff;display:none;overflow:hidden;}
+    #serv .serv-in ul li ._chat .bor{height:50px;border-bottom:2px solid #e9e9e9;}
+    #serv .serv-in ul li ._chat .bor #btn_dec{background:#fff;width:50px;display:inline-block;text-indent:0;
+        text-align:center;margin-left:287px;}
+    #serv .serv-in ul li ._chat .bor #btn_del{background:#fff;width:50px;display:inline-block;text-indent:0;
+        text-align:center;}
+    /*更多链接*/
+    #more{height:202px;background:#797979;}
+    #more .more-in{width:1004px;height:147px;margin:0 auto;padding-top:55px;}
+    #more .more-in dl{float:left;width:122px;height:106px;border-right:1px solid #959292;padding-left:40px;}
+    #more .more-in .last_dl{border:none;}
+    #more .more-in dl dt{height:33px;line-height:33px;font-size:15px;font-weight:bold;color:#cdcdcd;}
+    #more .more-in dl a{color:#cdcdcd;line-height:20px;}
+    /*版本声明*/
+    #ver{height:152px;background:#797979;}
+    #ver .ver-in{width:1004px;height:152px;margin:0 auto;}
+    #ver .ver-in .version{width:680px;height:100px;margin:0 auto;color:#cdcdcd;padding-top:30px;text-align:center;
+        font-size:13px;line-height:20px;}
+    #ver .ver-in .version b{display:block;height:30px;line-height:60px;font-size:15px;font-weight:bold;}
+    </style>
+
+    <script src="libs/jquery-1.11.3.js"></script>
+    <script src="js/register.js"></script>
+    <script src="js/register2.js"></script>
+
+</head>
+<body>
+<!--==============头部================-->
+<div id="top">
+    <div class="top-in">
+        <b><img src="imgs_regis/logo.png" alt=""></b>
+        <ul class="t_nav">
+            <li class="fir"><a href="##">登录</a></li>
+            <li class="sec"><a href="##">加入DR族</a></li>
+            <li class="third"></li>
+            <li class="fort"><a href="##">帮助中心 ></a></li>
+        </ul>
+    </div>
+</div>
+<!--===============banner=============-->
+<div id="pic">
+    <div class="pic-in">
+        <ul class="_scroll">
+            <li class="li1"><a href="##"><img src="imgs_regis/login.jpg" alt=""></a></li>
+            <li><a href="##"><img src="imgs_regis/login2.jpg" alt=""></a></li>
+        </ul>
+
+        <ul class="resign">
+            <li class="lef bg"></li>
+            <li class="rig"></li>
+        </ul>
+    </div>
+</div>
+<!--=============邮箱注册===============-->
+<div id="cont">
+  <p class="moth">邮箱注册</p>
+  <div class="menu">
+      <input type="text" id="user" placeholder="请输入您的邮箱地址">
+      <input type="password" id="pwd" placeholder="请输入6-20位的密码">
+      <input type="password" id="repwd" placeholder="请再次输入密码">
+      <input type="text" id="code" placeholder="请输入验证码">
+      <span class="message"></span>
+      <span id="codeNum"></span>
+      <p class="bot">
+        <input type="checkbox" id="check"> 同意Darry Ring用户<b><a href="##">注册协议</a></b>和<b><a href="##">隐私条款</a></b>
+        <i class="btn">立即加入DR族</i>
+      </p>
+      <p class="_link">
+          <a class="qq" href="##"></a>
+          <a class="chat" href="##"></a>
+          <a class="sina" href="##"></a>
+          <a class="pay" href="##"></a>
+          <a class="login" href="login.html"> > 已有账户 登录</a>
+      </p>
+  </div>
+</div>
+<!--===========导航条顶部背景色===========-->
+<div id="bg_color"> </div>
+<!--============底部导航================-->
+<div id="bot_nav">
+    <div class="bot-in">
+        <ul class="_bot">
+            <li><a class="a1 li1" href="##"></a>  <a class="a2" href="##">权威认证</a></li>
+            <li><a class="a1 li2" href="##"></a> <a class="a2" href="##">一钻双证</a></li>
+            <li><a class="a1 li3" href="##"></a> <a class="a2" href="##">终生保养</a></li>
+            <li><a class="a1 li4" href="##"></a> <a class="a2" href="##">以小换大</a></li>
+            <li><a class="a1 li5" href="##"></a> <a class="a2" href="##">15天退换</a></li>
+            <li><a class="a1 li6" href="##"></a> <a class="a2" href="##">全国免运费</a></li>
+            <li><a class="a1 li7" href="##"></a> <a class="a2" href="##">全程保险</a></li>
+        </ul>
+    </div>
+</div>
+<!--============多项服务================-->
+<div id="serv">
+    <div class="serv-in">
+        <ul>
+            <li><a class="_code" href="##">关注我们</a>
+                <div class="rfid">
+                    <a class="a1" href="##"></a>
+                    <a class="a2" href="##"></a>
+                    <a class="a3" href="##"></a>
+                    <a class="a4" href="##"></a>
+                    <a class="a5" href="##"></a>
+                    <em></em>
+                </div>
+            </li>
+            <li><a href="##">真爱查询</a></li>
+            <li><a class="third" href="##">实体店免费预约</a></li>
+            <li><a id="_chat" href="##">在线客服</a>
+                <div class="_chat">
+                    <p class="bor">
+                        <a id="btn_dec" href="##">收起</a>
+                        <a id="btn_del" href="##">关闭</a>
+
+                    </p>
+                </div>
+            </li>
+            <li class="last"> <b>24小时全国免费服务热线</b>
+                 <i></i>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--==============底部链接==============-->
+<div id="more">
+    <div class="more-in">
+        <dl>
+            <dt>关于我们 </dt>
+            <dd><a href="##">权威认证</a></dd>
+            <dd><a href="##">合作专区</a></dd>
+            <dd><a href="##">加入我们</a></dd>
+        </dl>
+
+        <dl>
+            <dt>购物指南 </dt>
+            <dd><a href="##">购买流程</a></dd>
+            <dd><a href="##">支付方式</a></dd>
+            <dd><a href="##">配送流程</a></dd>
+        </dl>
+
+        <dl>
+            <dt>售后服务 </dt>
+            <dd><a href="##">退货流程</a></dd>
+            <dd><a href="##">办理售后</a></dd>
+            <dd><a href="##">15天退换</a></dd>
+        </dl>
+
+        <dl>
+            <dt>帮助中心 </dt>
+            <dd><a href="##">注册流程</a></dd>
+            <dd><a href="##">联系客服</a></dd>
+            <dd><a href="##">网站地图</a></dd>
+        </dl>
+
+        <dl>
+            <dt>服务条款 </dt>
+            <dd><a href="##">终生保养</a></dd>
+            <dd><a href="##">注册协议</a></dd>
+            <dd><a href="##">隐私声明</a></dd>
+        </dl>
+
+        <dl class="last_dl">
+            <dt>DR咨询 </dt>
+            <dd><a href="##">钻石百科</a></dd>
+            <dd><a href="##">产品百科</a></dd>
+            <dd><a href="##">求婚指南</a></dd>
+        </dl>
+
+    </div>
+</div>
+<!--==============版本声明===============-->
+<div id="ver">
+    <div class="ver-in">
+        <p class="version">
+            Copyright © 2006-2015 www.darryring.com 戴瑞珠宝 All Rights Reserved. 粤ICP备11012085号-2
+            ICP经营许可证粤B2-20140279 | 中国互联网违法信息举报中心 | 中国公安网络110报警服务 | 本网站提供所售商品的正式发票
+            <b> 中文简体/ English </b>
+        </p>
+
+    </div>
+</div>
+</body>
+</html>

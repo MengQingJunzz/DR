@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分页</title>
+    <link rel="stylesheet" type="text/css" href="../css/paging.css">
+    <script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="../js/paging.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //分页的封装
+            function paging (pageCount) {
+               //先顶一个json对象
+               var paging = {
+                   current : 1,
+                   allPage : pageCount,
+                   showPage : 5,
+                   addHtml : add
+               };
+               function add () {
+                   var str = "";
+                   str = "<a class='first' href=#>" + "上一页" + "</a>";
+                   for (var i = 1; i <= paging.showPage; i++ ) {
+                       //如果paging.current的值是1或者2就直接赋值
+                       if (paging.current == 1 || paging.current ==2) {
+                           if (i == paging.allPage) {
+                               break;
+                           }
+                           str+="<a href=#"+  i +">" + i + "</a>";
+                       } else {//否则就让paging.current在中间
+                           if (paging.current + (paging.showPage - 1) / 2 >= paging.allPage) {
+                               str+="<a href=#"+  (paging.allPage - paging.showPage + i)
+                                       +">" + (paging.allPage - paging.showPage + i) + "</a>";
+                           } else {
+                               str+="<a href=#"+  (paging.current - (paging.showPage + 1) / 2 + i)
+                                       +">" + (paging.current - (paging.showPage + 1) / 2 + i) + "</a>";
+                           }
+                       }
+                   }
+                   if (paging.allPage > paging.current + (paging.showPage - 1) / 2) {
+                       str+="<span>…</span>";
+                   }
+                   str += "<a class='last' href=#>" + "下一页" + "</a>";
+                   str += "共<i>" + paging.allPage + "</i>页&nbsp;";
+                   str += "跳转到<input class='t_input' type='text' value='1' /><input class='b_input' type='button' value='确定' />"
+                   $(".paging").html(str);
+               }
+
+               paging.addHtml();
+
+               //添加点击事件
+               $(".paging").on("click","a:not(.first):not(.last)",function () {
+                   paging.current = parseInt($(this).attr("href").substring(1));
+                   paging.addHtml();
+                   console.log( paging.current);
+                   createHtml(paging.current);
+               });
+
+               //给上一页添加事件
+               $(".paging").on("click",".first",function () {
+                   if (paging.current == 1) {
+                       return;
+                   }
+                   $(this).prop("href","#" + --paging.current);
+                   paging.addHtml();
+                   createHtml(paging.current);
+               });
+
+               //给下一页添加事件
+               $(".paging").on("click",".last",function () {
+                   if (paging.current == paging.allPage) {
+                       return;
+                   }
+                   $(this).prop("href","#" + ++paging.current);
+                   paging.addHtml();
+                   createHtml(paging.current);
+               });
+
+               //给input按钮添加事件
+               $(".paging").on("click",".b_input",function () {
+                   var index = parseInt($(".paging .t_input").val());
+                   if (index) {
+                       paging.current = index;
+                       paging.addHtml();
+                       createHtml(paging.current);
+                   }
+               });
+
+
+           }
+
+            //添加商品列表
+
+            //存放所有的商品
+            var allProduct = [];
+
+            //每页显示的个数
+            var showCount = 6;
+
+
+
+            //当前页数 默认为1
+            var current = 1;
+            /*$(".con_bottom ul").add = createHtml;*/
+            $.get("../json/paging.json",function (data) {
+                console.log(data);
+                allProduct = data;
+                //总的页数
+                var pageCount = Math.ceil(allProduct.length / showCount);
+                createHtml(current);
+                paging(pageCount);
+            });
+
+
+
+
+            //创建html到ul中
+            var createHtml = function  (current) {
+                var objIndex = (current - 1) * showCount;
+                console.log(objIndex);
+                console.log(allProduct[objIndex]);
+                var htmlStr = "";
+                for (var i = 0; i < showCount; i++) {
+                    if ((i + 1) % 3 == 0) {
+                        htmlStr += '<li class="none_margin">'+
+                                ' <div>'+
+                                ' <h3>'+
+                                ' <a href=""><img src='+ allProduct[objIndex + i].imgSrc +' alt=""></a>'+
+                                 allProduct[objIndex + i].price+
+                                ' </h3>'+
+                                '<p class="p1">'+ allProduct[objIndex + i].info +'</p>'+
+                                ' <p class="p2"><a class="collect" href="">收藏</a><a class="buy" href="">立即购买</a>'+
+                                '<p class="p3">'+
+                                '<span>已售：'+ allProduct[objIndex + i].sellNum +'</span><i>评价：<em>'+ allProduct[objIndex + i].comment +'</em></i></p>'+
+                                '</div>'+
+                                '</li>';
+                    } else {
+                        htmlStr += '<li>'+
+                                ' <div>'+
+                                ' <h3>'+
+                                ' <a href=""><img src='+ allProduct[objIndex + i].imgSrc +' alt=""></a>'+
+                                 allProduct[objIndex + i].price+
+                                ' </h3>'+
+                                '<p class="p1">'+ allProduct[objIndex + i].info +'</p>'+
+                                ' <p class="p2"><a class="collect" href="">收藏</a><a class="buy" href="">立即购买</a>'+
+                                '<p class="p3">'+
+                                '<span>已售：'+ allProduct[objIndex + i].sellNum +'</span><i>评价：<em>'+ allProduct[objIndex + i].comment +'</em></i></p>'+
+                                '</div>'+
+                                '</li>';
+                    }
+
+                }
+
+                $(".con_bottom ul").html(htmlStr);
+            }
+        })
+
+    </script>
+</head>
+<body>
+
+    <div id="banner">
+        <div class="banner">
+            <div class="banner_img">
+                <a href=""><img src="../images_1/banner_one.jpg" alt=""></a>
+            </div>
+            <div class="banner_search">
+                <p class="proposal"><a href="">Darry Ring</a><span>>&ensp;求婚戒指</span></p>
+                <p class="search"><input class="input_1" type="text" placeholder="请输入关键字搜索"><input class="input_2" type="text" value="搜索"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="con">
+        <div class="con">
+            <div class="con_top">
+                <dl>
+                    <dt><span>排序</span></dt>
+                    <dd class="dd_1"><a href="">按人气</a></dd>
+                    <dd><a href="">按销量</a></dd>
+                    <dd><a href="">按价格</a></dd>
+                </dl>
+                <ul>
+                    <li><span>共263件&ensp;商品</span></li>
+                    <li><span>1/22</span></li>
+                    <li class="li_3"><a href=""><span></span></a></li>
+                    <li class="li_4"><a href=""><span></span></a></li>
+                </ul>
+            </div>
+            <div class="con_bottom">
+                <ul>
+                   
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="paging">
+        <div class="paging">
+
+        </div>
+    </div>
+
+</body>
+</html>
